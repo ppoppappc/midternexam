@@ -70,7 +70,12 @@ public class MainActivity extends AppCompatActivity {
         }
         wordtoSpan.setSpan(new AbsoluteSizeSpan(size,true),0,temp.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         list.add(wordtoSpan);
-        txv.append(wordtoSpan);
+        txv.setText("");
+        //把字串從後往前接
+        for(int n = list.size()-1;n>=0;n--){
+            txv.append((SpannableString)list.get(n));
+        }
+
         txv.setMovementMethod(new ScrollingMovementMethod());
     }
 
@@ -78,7 +83,8 @@ public class MainActivity extends AppCompatActivity {
         TextView txv = (TextView)findViewById(R.id.txv);
         Collections.reverse(list);
         txv.setText("");
-        for(int n = 0;n<list.size();n++){
+       //把字串從後往前接
+        for(int n = list.size()-1;n>=0;n--){
             txv.append((SpannableString)list.get(n));
         }
 
